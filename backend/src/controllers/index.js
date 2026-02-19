@@ -1,0 +1,1 @@
+export {default as metalPriceController} from './metal-prices.controller.js'

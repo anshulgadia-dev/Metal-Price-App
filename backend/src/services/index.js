@@ -1,0 +1,1 @@
+export { default as metalPriceService} from './metal-prices.service.js'
