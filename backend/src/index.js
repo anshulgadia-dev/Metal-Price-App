@@ -7,6 +7,8 @@ import helmet from 'helmet';
 import cors from 'cors'
 import metalPriceRouter from './routes/v1/metal-prices.route.js'
 import { Server } from 'socket.io';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger-output.json' with {type : 'json'};
 
 
 
@@ -17,7 +19,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get('/' , (req,res) => {
     res.send('Server is up and running')
 })
