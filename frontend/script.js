@@ -10,7 +10,9 @@ socket.on('metal-prices-updated' , (data) => {
     console.log('Latest Price Recieved');
     updateOnUI(data);
 })
-
+// socket.on("hello" , (data) => {
+//   console.log(data);
+// })
 
 let data;
 let isFetching = false;
@@ -40,24 +42,25 @@ const fetchPrices = async () => {
 const updateOnUI = (data) => {
   containerDiv.innerHTML = '';
 
-  for (const [key, val] of Object.entries(data?.metals || {})) {
+  // for (const [key, val] of Object.entries(data?.metals || {})) {
 
     const cardDiv = document.createElement('div');
     cardDiv.className = 'card'
 
     const h2Tag = document.createElement('h2');
-    h2Tag.innerText = key;
+    h2Tag.innerText = data.code;
     h2Tag.className = 'metal-name';
 
     const pTag = document.createElement('p');
-    pTag.innerText = `${data.currency} - ${Number(val).toFixed(3)} /${data.unit}`;
+    // pTag.innerText = `${data.currency} - ${Number(val).toFixed(3)} /${data.unit}`;
+    pTag.innerText = `${data.price}`;
     pTag.className = 'metal-price';
 
     cardDiv.appendChild(h2Tag);
     cardDiv.appendChild(pTag)
     containerDiv.appendChild(cardDiv);
   }
-};
+// };
 
 // setInterval(fetchPrices, 5000);
 

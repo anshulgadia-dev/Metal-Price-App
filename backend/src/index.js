@@ -9,6 +9,7 @@ import metalPriceRouter from './routes/v1/metal-prices.route.js'
 import { Server } from 'socket.io';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger-output.json' with {type : 'json'};
+import { startMetalSocket } from './services/metalSocket.service.js';
 
 
 
@@ -48,4 +49,5 @@ const port = process.env.PORT || 3100
 
 httpServer.listen(port , () => {
     console.log(`Server is running on http://localhost:${port}`)
+    startMetalSocket();
 })

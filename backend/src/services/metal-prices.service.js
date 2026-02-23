@@ -19,9 +19,9 @@ const METAL_PRICE_API_UNIT = process.env.METAL_PRICE_API_UNIT || 'g'
 const url = `${METAL_PRICE_API}?api_key=${METAL_PRICE_API_KEY}&currency=${METAL_PRICE_API_CURRENCY}&unit=${METAL_PRICE_API_UNIT}`
 
 // console.log(METAL_PRICE_API)
-cron.schedule('0 */5 * * * *', () => {
-    refreshMetalPrices();
-});
+// cron.schedule('0 */5 * * * *', () => {
+//     refreshMetalPrices();
+// });
 
 
 
@@ -60,7 +60,7 @@ const getMetalPrices = async () => {
 
     await setDataToRedis(freshData)
     
-    return freshData;
+    return freshData;   
 }
 
 const setDataToRedis =  async (data) => {
